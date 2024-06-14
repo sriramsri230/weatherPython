@@ -4,13 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .weather-icon {
+            width: 64px;
+            height: 64px;
+            margin: auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Weather App</h1>
-    <form action="/weather" method="post">
-        <label for="city">Enter city name:</label><br>
-        <input type="text" id="city" name="city"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <h1 class="text-center mb-4">Weather App</h1>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Chennai</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Chennai">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Coimbatore</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Coimbatore">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Trichy</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Trichy">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Madurai</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Madurai">View Weather</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Thirunelveli</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Thirunelveli">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Salem</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Salem">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Thanjavur</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Thanjavur">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Ariyalur</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Ariyalur">View Weather</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Perambalur</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Perambalur">View Weather</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Chengalpattu</h5>
+                        <button type="button" class="btn btn-primary view-weather" data-city="Chengalpattu">View Weather</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h2 class="mt-4">Search Specific City</h2>
+        <form id="weather-form" action="/weather" method="post" class="form-inline mt-2">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="city" class="sr-only">City</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Enter city name">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.view-weather');
+            buttons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const city = this.getAttribute('data-city');
+                    document.getElementById('city').value = city;
+                    document.getElementById('weather-form').submit();
+                });
+            });
+        });
+    </script>
 </body>
 </html>

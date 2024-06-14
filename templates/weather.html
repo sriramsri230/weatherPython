@@ -4,11 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather for {{ weather.city }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .weather-icon {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Weather for {{ weather.city }}, {{ weather.country }}</h1>
-    <p>Temperature: {{ weather.temperature }}°C</p>
-    <p>Condition: {{ weather.condition }}</p>
-    <a href="/">Back to search</a>
+    <div class="container">
+        <h1 class="text-center mb-4">Weather for {{ weather.city }}, {{ weather.country }}</h1>
+        <div class="card text-center mx-auto" style="width: 18rem;">
+            <img src="{{ weather.icon }}" class="card-img-top weather-icon" alt="{{ weather.condition }}">
+            <div class="card-body">
+                <h5 class="card-title">Current Temperature</h5>
+                <p class="card-text">{{ weather.temperature }}°C</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Condition: {{ weather.condition }}</li>
+                <li class="list-group-item">Feels Like: {{ weather.feels_like }}°C</li>
+                <li class="list-group-item">Humidity: {{ weather.humidity }}%</li>
+                <li class="list-group-item">Wind: {{ weather.wind_speed }} kph ({{ weather.wind_dir }})</li>
+                <li class="list-group-item">Visibility: {{ weather.visibility }} km</li>
+            </ul>
+            <div class="card-body">
+                <a href="/" class="btn btn-primary">Back to search</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
